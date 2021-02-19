@@ -1,5 +1,7 @@
 # Called when program starts, define initial environment properties. 
 from Tile import Tile
+from Enemy import Enemy
+import random
 
 ### GLOBAL VARIABLES ### 
 
@@ -7,6 +9,7 @@ from Tile import Tile
 boardDimension = 10
 tileCount = boardDimension * boardDimension
 playerLocation = 0 
+enemies = []
 
 # Setting default images for use. Might be bad convention now, will change later when we have more of the game 
 # figured out. 
@@ -36,6 +39,7 @@ def loadImages():
     images = {} 
     images["cobblestone"] = loadImage("images/cobbleStone.png") 
     images["stone"] = loadImage("images/stone.png") 
+    images["virus"] = loadImage("images/virus.png")
     return images 
 
 def instantiateTiles(images, tileCount, dimension, defaultImage = "stone", startingLocation = 0): 
@@ -49,7 +53,7 @@ def instantiateTiles(images, tileCount, dimension, defaultImage = "stone", start
     tileCount -> number of tiles in the board 
     dimension -> board dimensions 
     """
-    tiles = [] 
+    tiles = []
     tileSize = width / dimension
     for _ in range(tileCount): 
         tileWidth = (_ % dimension) * tileSize 
@@ -57,7 +61,9 @@ def instantiateTiles(images, tileCount, dimension, defaultImage = "stone", start
         tiles.append(Tile(tileWidth, tileHeight, images[defaultImage], tileSize))
     
     # Setting player location. 
-    tiles[startingLocation].updateImage(images["cobblestone"]) 
+    tiles[startingLocation].updateImage(images["cobblestone"])
+    for _ in range(7):
+        enemies.append(Enemy(random.randint(0, 99), 10, 10, images["virus"], random.randint(0, 2), tiles, random.randint(1, 4), images[defaultImage]))        
     return tiles 
          
     
@@ -70,6 +76,8 @@ def draw():
     """
     for _ in range(len(tiles)):
         tiles[_].showTile()  
+    for _ in range(len(enemies)):
+        enemies[_].move()
         
 def keyPressed():
     """
