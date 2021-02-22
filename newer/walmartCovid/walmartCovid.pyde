@@ -2,6 +2,7 @@ add_library("sound")
 from Tile import Tile 
 from Enemy import Enemy 
 from Images import IMAGES
+import Settings
 import random
 
 MENU_STATE = 0
@@ -9,26 +10,19 @@ PLAY_STATE = 1
 WIN_STATE = 2
 LOSE_STATE = 3
 
+
+### Sounds can't be loaded in a different file ### 
 DIRECTORY_NAME = "sounds/"
 FOOD_DEPOSIT_NAME = DIRECTORY_NAME + "deposit_cart.wav"
 FOOD_DEPOSIT = SoundFile(this, FOOD_DEPOSIT_NAME)
 
-
-DEFAULT = {
-        "dimension" : 10,
-        "playerPosition" : 0,
-        "cartPosition" : 9,                       
-        "enemyCount" : 5, 
-        "foodCount" : 5,
-        "winFoodCount" : 5
-        } 
 class Game:
     """
     The Game Object keeps track of the general game state.
     This includes: the player, board, enemies, food, and cart.
     """
     # Create Settings variables and pass into the game function on initialization if you want to tweak the parameters.
-    def __init__(self, gameSettings = DEFAULT, gameWidth = 700, gameHeight = 700):
+    def __init__(self, gameSettings, gameWidth = 700, gameHeight = 700):
         self.gameSettings = gameSettings
         self.Board = Board(gameSettings['dimension'], gameWidth)
         self.Player = Player(gameSettings['playerPosition'])
@@ -145,8 +139,8 @@ class Cart:
         self.foodHeld = []
 
 # Game initialization
-# Change params to game to use non-default settings -> see settings.py and the Game object. By default, it uses the defaultSettings.
-Game = Game()
+# Change params to game to use non-default settings -> see settings.py and the Game object.
+Game = Game(Settings.DEFAULT)
 def setup():
     size(700, 700)
     Game.images = loadImages()
@@ -165,6 +159,8 @@ def draw():
                 enemy.move()
                 if enemy.pos in Game.foodLocations:
                     Game.foodLocations.remove(enemy.pos)
+                    if len(Game.foodLocations) == 0:
+                        Game.initializeFoods(2)
 
         Game.Board.tiles[Game.Player.position].updateImage(Game.images["PLAYER_IMAGE"])
         Game.Board.tiles[Game.Cart.position].updateImage(Game.images["CART_IMAGE"])
