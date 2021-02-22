@@ -18,6 +18,9 @@ class Tile:
         """
         Shows the tile on the drawing board. 
         """
-        image(self.image, self.x, self.y, self.tileSize, self.tileSize) 
+        if type(self.image) is int:
+            return 
+        else: 
+            image(self.image, self.x, self.y, self.tileSize, self.tileSize) 
         
     

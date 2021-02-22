@@ -68,6 +68,7 @@ class Game:
             self.enemies.append(currentEnemy)
 
     def initializeFoods(self, FOOD_IMAGE, foodCount = 3):
+        print("Just made some foods") 
         for _ in range(foodCount):
             foodLocation = random.randint(0, self.Board.tileCount - 1)
             self.Board.tiles[foodLocation].updateImage(FOOD_IMAGE)
@@ -154,22 +155,21 @@ def draw():
     if Game.currentState == PLAY_STATE:
         for tile in Game.Board.tiles:
             tile.showTile()
-            
         for enemy in Game.enemies:
-                enemy.move()
-                if enemy.pos in Game.foodLocations:
-                    Game.foodLocations.remove(enemy.pos)
-                    if len(Game.foodLocations) == 0:
-                        Game.initializeFoods(2)
+            enemy.move()
+            if enemy.pos in Game.foodLocations:
+                Game.Board.tiles[enemy.pos].updateImage(Game.images['TILE_IMAGE'])
+                Game.foodLocations.remove(enemy.pos)
 
         Game.Board.tiles[Game.Player.position].updateImage(Game.images["PLAYER_IMAGE"])
         Game.Board.tiles[Game.Cart.position].updateImage(Game.images["CART_IMAGE"])
-        if len(Game.foodLocations) == 0:
-            Game.initializeFoods(2)
 
         textFont(gameFont, 32)
         fill(0)
         text("Groceries left: " + str(Game.gameSettings['winFoodCount'] - len(Game.Cart.foodHeld)), 1 * width / 4 + 50, 100)
+        
+        if len(Game.foodLocations) == 0: 
+            Game.initializeFoods(Game.images["FOOD_IMAGE"], 10)
 
     if Game.currentState == WIN_STATE: # Win state
         textFont(gameFont, 64)
@@ -213,8 +213,7 @@ def keyPressed():
         Game.foodLocations.remove(Game.Player.position)
         Game.Player.foodHeld.append(Game.Player.position)
         
-    if len(Game.foodLocations) == 0: Game.initializeFoods(Game.images["FOOD_IMAGE"])
-
+            
     Game.Player.position = Game.Player.position % Game.Board.tileCount
     Game.Board.tiles[previousPlayerPosition].updateImage(Game.images["TILE_IMAGE"])
     Game.Board.tiles[Game.Player.position].updateImage(Game.images["PLAYER_IMAGE"])
