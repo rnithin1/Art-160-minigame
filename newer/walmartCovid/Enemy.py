@@ -6,7 +6,7 @@ class Enemy:
     Tile class that retains the x, y, image and size of the tile. 
     """
 
-    def __init__(self, pos, x, y, image, move, tiles, moveTime, defaultImage):
+    def __init__(self, pos, x, y, image, move, tiles, moveTime, defaultImage, Game):
         """
         pos is position, x is width of board, y height of board, is image is the enemy sprite, imgSize is the size
         of this sprite, move is 0, 1, 2 for doesn't move, move vertically, and move right,
@@ -23,6 +23,7 @@ class Enemy:
         self.defaultImage = defaultImage
         self.lastMove = time.time()
         self.tiles[pos].updateImage(self.image)
+        self.Game = Game # Reference to the parent game
 
     def move(self):
         timeSinceMoved = time.time() - self.lastMove
@@ -33,6 +34,10 @@ class Enemy:
             newPos = (self.pos + self.boardLength) % self.boardSize
         else:
             newPos = (self.pos + 1) % self.boardSize
+            
+        if self.Game.Board.mapValue(newPos) in self.Game.Board.unwalkable:
+            return
+            
         self.tiles[newPos].updateImage(self.image)
         self.tiles[prevPos].updateImage(self.defaultImage)
         self.lastMove = time.time()

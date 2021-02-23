@@ -1,5 +1,5 @@
 DEFAULT = {
-        "dimension" : 10,
+        "dimension" : 20,
         "playerPosition" : 0,
         "cartPosition" : 9,                       
         "enemyCount" : 5, 

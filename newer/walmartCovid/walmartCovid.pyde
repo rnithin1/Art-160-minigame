@@ -4,17 +4,25 @@ from Enemy import Enemy
 from Images import IMAGES
 import Settings
 import random
+import os
+import re
 
 MENU_STATE = 0
 PLAY_STATE = 1
 WIN_STATE = 2
 LOSE_STATE = 3
 
-
 ### Sounds can't be loaded in a different file ### 
-DIRECTORY_NAME = "sounds/"
-FOOD_DEPOSIT_NAME = DIRECTORY_NAME + "deposit_cart.wav"
-FOOD_DEPOSIT = SoundFile(this, FOOD_DEPOSIT_NAME)
+SOUND_DIRECTORY_NAME = "sounds/"
+FOOD_DEPOSIT_NAME = SOUND_DIRECTORY_NAME + "deposit_cart.wav"
+
+IMAGE_DIRECTORY_NAME = "images/"
+UNWALKABLE_DIRECTORY_NAME = IMAGE_DIRECTORY_NAME + "unwalkable/"
+WALKABLE_DIRECTORY_NAME = IMAGE_DIRECTORY_NAME + "walkable/"
+
+###                        Walkable vs unwalkable                        ###
+### Weird convention: use odd numbers to denote walkable tiles (floors), ###
+### and even numbers to denote unwalkable tiles (walls)                  ###
 
 class Game:
     """
@@ -60,17 +68,21 @@ class Game:
         boardWidth, boardHeight = self.Board.dimension, self.Board.dimension
         for _ in range(self.gameSettings['enemyCount']):
             enemyPosition = random.randint(0, self.Board.tileCount - 1)
+            while self.Board.mapValue(enemyPosition) in self.Board.unwalkable:
+                enemyPosition = random.randint(0, self.Board.tileCount - 1)
             enemyMoveType = random.randint(0, 2)
             currentTileSet = self.Board.tiles
             enemyMoveTime = random.randint(1, 4)
             # Enemy objects handle updating the tileset to include their image.
-            currentEnemy = Enemy(enemyPosition, boardWidth, boardHeight, ENEMY_IMAGE, enemyMoveType, currentTileSet, enemyMoveTime, DEFAULT_IMAGE)
+            currentEnemy = Enemy(enemyPosition, boardWidth, boardHeight, ENEMY_IMAGE, enemyMoveType, currentTileSet, enemyMoveTime, DEFAULT_IMAGE, self)
             self.enemies.append(currentEnemy)
 
     def initializeFoods(self, FOOD_IMAGE, foodCount = 3):
         print("Just made some foods") 
         for _ in range(foodCount):
             foodLocation = random.randint(0, self.Board.tileCount - 1)
+            while self.Board.mapValue(foodLocation) in self.Board.unwalkable:
+                foodLocation = random.randint(0, self.Board.tileCount - 1)
             self.Board.tiles[foodLocation].updateImage(FOOD_IMAGE)
             self.foodLocations.append(foodLocation)
 
@@ -110,12 +122,40 @@ class Board:
         self.width = gameWidth
         self.tileSize = gameWidth / dimension
         self.tiles = []
+        self.map_level = 0
+        self.walkable = [int(x[:-4]) for x in os.listdir(WALKABLE_DIRECTORY_NAME)]
+        self.unwalkable = [int(x[:-4]) for x in os.listdir(UNWALKABLE_DIRECTORY_NAME)]
+        print(self.walkable)
+        print(self.unwalkable)
 
     def initiateBaseTiles(self, tileImage):
-        for _ in range(self.tileCount):
-            tileX = (_ % self.dimension) * self.tileSize
-            tileY = (_ / self.dimension) * self.tileSize
-            self.tiles.append(Tile(tileX, tileY, tileImage, self.tileSize))
+        self.loadTileFromMap()
+        for i in range(self.tileCount):
+            tileX = (i % self.dimension) * self.tileSize
+            tileY = (i / self.dimension) * self.tileSize
+            #self.tiles.append(Tile(tileX, tileY, tileImage, self.tileSize))
+            self.tiles.append(Tile(tileX, tileY, self.imageFromMapIndex(i, tileImage), self.tileSize))
+            
+    def loadTileFromMap(self):
+        f = open("map_{}.txt".format(self.map_level), "r")
+        self.map_string = re.sub(r"[\n\t\s]*", "", f.read())
+        f.close()
+        
+    def mapValue(self, index):
+        return int(self.map_string[index])
+        
+    def imageFromMapIndex(self, index, tileImage):
+        item = self.mapValue(index)
+        if item in self.walkable:
+            path = loadImage(WALKABLE_DIRECTORY_NAME + str(item) + ".png")
+        
+        elif item in self.unwalkable:
+            path = loadImage(UNWALKABLE_DIRECTORY_NAME + str(item) + ".png")
+            
+        else:
+            path = tileImage
+        
+        return path
 
     def placePlayer(self, playerLocation, PLAYER_IMAGE):
         self.tiles[playerLocation].updateImage(PLAYER_IMAGE)
@@ -143,6 +183,10 @@ class Cart:
 # Change params to game to use non-default settings -> see settings.py and the Game object.
 Game = Game(Settings.DEFAULT)
 def setup():
+    # Sounds
+    global FOOD_DEPOSIT
+    FOOD_DEPOSIT = SoundFile(this, FOOD_DEPOSIT_NAME)
+    
     size(700, 700)
     Game.images = loadImages()
     Game.start()
@@ -156,9 +200,11 @@ def draw():
         for tile in Game.Board.tiles:
             tile.showTile()
         for enemy in Game.enemies:
+            old_pos = enemy.pos
             enemy.move()
+                
             if enemy.pos in Game.foodLocations:
-                Game.Board.tiles[enemy.pos].updateImage(Game.images['TILE_IMAGE'])
+                Game.Board.tiles[enemy.pos].updateImage(Game.Board.mapValue(enemy.pos))
                 Game.foodLocations.remove(enemy.pos)
 
         Game.Board.tiles[Game.Player.position].updateImage(Game.images["PLAYER_IMAGE"])
@@ -202,6 +248,9 @@ def keyPressed():
             Game.Player.position += boardDimension
         elif keyCode == UP and Game.isValidMove(previousPlayerPosition, previousPlayerPosition - boardDimension):
             Game.Player.position -= boardDimension
+            
+    if Game.Board.mapValue(Game.Player.position) in Game.Board.unwalkable:
+        Game.Player.position = previousPlayerPosition
 
     if Game.Player.position == Game.Cart.position:
         Game.Player.position = previousPlayerPosition
