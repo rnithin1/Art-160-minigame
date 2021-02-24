@@ -122,7 +122,7 @@ class Board:
         self.width = gameWidth
         self.tileSize = gameWidth / dimension
         self.tiles = []
-        self.map_level = 0
+        self.map_level = 2
         self.walkable = [int(x[:-4]) for x in os.listdir(WALKABLE_DIRECTORY_NAME)]
         self.unwalkable = [int(x[:-4]) for x in os.listdir(UNWALKABLE_DIRECTORY_NAME)]
         print(self.walkable)
@@ -202,9 +202,8 @@ def draw():
         for enemy in Game.enemies:
             old_pos = enemy.pos
             enemy.move()
-                
             if enemy.pos in Game.foodLocations:
-                Game.Board.tiles[enemy.pos].updateImage(Game.Board.mapValue(enemy.pos))
+                Game.Board.tiles[enemy.pos].updateImage(Game.Board.imageFromMapIndex(enemy.pos, Game.images["TILE_IMAGE"]))
                 Game.foodLocations.remove(enemy.pos)
 
         Game.Board.tiles[Game.Player.position].updateImage(Game.images["PLAYER_IMAGE"])
@@ -264,5 +263,8 @@ def keyPressed():
         
             
     Game.Player.position = Game.Player.position % Game.Board.tileCount
-    Game.Board.tiles[previousPlayerPosition].updateImage(Game.images["TILE_IMAGE"])
+    print(Game.Board.mapValue(previousPlayerPosition))
+    
+    Game.Board.tiles[previousPlayerPosition].updateImage(Game.Board.imageFromMapIndex(previousPlayerPosition, Game.images["TILE_IMAGE"]))
     Game.Board.tiles[Game.Player.position].updateImage(Game.images["PLAYER_IMAGE"])
+    
