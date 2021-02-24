@@ -85,12 +85,12 @@ class Game:
             enemyPosition = random.randint(0, self.Board.tileCount - 1)
             while self.Board.mapValue(enemyPosition) in self.Board.unwalkable:
                 enemyPosition = random.randint(0, self.Board.tileCount - 1)
-            enemyMoveType = random.randint(0, 2)
             currentTileSet = self.Board.tiles
-            enemyMoveTime = random.randint(1, 4)
+            enemyMoveTime = random.randint(3, 8) / 4.0
+            print(enemyMoveTime)
             # Enemy objects handle updating the tileset to include their image.
-            currentEnemy = Enemy(enemyPosition, boardWidth, boardHeight, ENEMY_IMAGE,
-                                 enemyMoveType, currentTileSet, enemyMoveTime, DEFAULT_IMAGE, self)
+            currentEnemy = Enemy(enemyPosition, boardWidth, boardHeight,
+                                 ENEMY_IMAGE, currentTileSet, enemyMoveTime, self)
             self.enemies.append(currentEnemy)
 
     def initializeFoods(self, FOOD_IMAGE, foodCount=5, food_types=food_types):
