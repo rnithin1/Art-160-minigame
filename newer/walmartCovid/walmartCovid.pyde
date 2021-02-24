@@ -21,6 +21,8 @@ IMAGE_DIRECTORY_NAME = "images/"
 UNWALKABLE_DIRECTORY_NAME = IMAGE_DIRECTORY_NAME + "unwalkable/"
 WALKABLE_DIRECTORY_NAME = IMAGE_DIRECTORY_NAME + "walkable/"
 
+FOOD_DIRECTORY_NAME = "food/"
+
 food_types = 3
 
 ###                        Walkable vs unwalkable                        ###
@@ -47,6 +49,7 @@ class Game:
         self.gameWidth = gameWidth
         self.gameHeight = gameHeight
         self.images = None
+        self.food_list = []
 
         self.food_types = 3
 
@@ -57,6 +60,7 @@ class Game:
         self.enemies = []
         self.foodLocations = []
         self.currentState = PLAY_STATE
+        self.food_list = []
 
         self.Board.initiateBaseTiles(self.images["TILE_IMAGE"])
         self.Board.placePlayer(self.Player.position,
@@ -89,24 +93,33 @@ class Game:
                                  enemyMoveType, currentTileSet, enemyMoveTime, DEFAULT_IMAGE, self)
             self.enemies.append(currentEnemy)
 
-    def initializeFoods(self, FOOD_IMAGE, foodCount=10, food_types=food_types, food_per_iteration=4):
+    def initializeFoods(self, FOOD_IMAGE, foodCount=5, food_types=food_types):
         def partition(number):
             answer = set()
-            answer.add((number, ))
+            answer.add((number,))
             for x in range(1, number):
                 for y in partition(number - x):
                     answer.add(tuple(sorted((x,) + y)))
             return answer
 
-        self.food_list = random.choice(
-            [tup for tup in partition(foodCount) if len(tup) == food_types])
+        if not self.food_list:
+            self.food_list = random.choice([tup for tup in partition(
+                self.gameSettings['winFoodCount']) if len(tup) == food_types])
 
-        for _ in range(foodCount):
-            foodLocation = random.randint(0, self.Board.tileCount - 1)
-            while self.Board.mapValue(foodLocation) in self.Board.unwalkable:
-                foodLocation = random.randint(0, self.Board.tileCount - 1)
-            self.Board.tiles[foodLocation].updateImage(FOOD_IMAGE)
-            self.foodLocations.append(foodLocation)
+        leftover = 0
+        if self.food_list:
+            food_gen = random.choice(
+                [tup for tup in partition(foodCount) if len(tup) == food_types])
+            for i in range(1, len(self.food_list) + 1):
+                for j in range(food_gen[i - 1]):
+                    foodLocation = random.randint(0, self.Board.tileCount - 1)
+                    while self.Board.mapValue(foodLocation) in self.Board.unwalkable:
+                        foodLocation = random.randint(
+                            0, self.Board.tileCount - 1)
+                    self.Board.tiles[foodLocation].updateImage(
+                        loadImage(IMAGE_DIRECTORY_NAME + FOOD_DIRECTORY_NAME + str(i) + ".png"))
+                    self.foodLocations.append(foodLocation)
+            print("Just made some foods")
 
         print("Just made some foods")
 
