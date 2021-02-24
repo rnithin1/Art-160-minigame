@@ -44,6 +44,8 @@ class Game:
         self.gameWidth = gameWidth
         self.gameHeight = gameHeight
         self.images = None 
+        
+        self.food_types = 3
 
     def restart(self): 
         self.Board = Board(self.gameSettings['dimension'], self.gameWidth)
@@ -79,14 +81,25 @@ class Game:
             currentEnemy = Enemy(enemyPosition, boardWidth, boardHeight, ENEMY_IMAGE, enemyMoveType, currentTileSet, enemyMoveTime, DEFAULT_IMAGE, self)
             self.enemies.append(currentEnemy)
 
-    def initializeFoods(self, FOOD_IMAGE, foodCount = 3):
-        print("Just made some foods") 
+    def initializeFoods(self, FOOD_IMAGE, foodCount=10, food_types=food_types, food_per_iteration=4):
+        def partition(number):
+            answer = set()
+            answer.add((number, ))
+            for x in range(1, number):
+                for y in partition(number - x):
+                    answer.add(tuple(sorted((x,) + y)))
+            return answer
+        
+        self.food_list = random.choice([tup for tup in partition(foodCount) if len(tup) == food_types])
+
         for _ in range(foodCount):
             foodLocation = random.randint(0, self.Board.tileCount - 1)
             while self.Board.mapValue(foodLocation) in self.Board.unwalkable:
                 foodLocation = random.randint(0, self.Board.tileCount - 1)
             self.Board.tiles[foodLocation].updateImage(FOOD_IMAGE)
             self.foodLocations.append(foodLocation)
+            
+        print("Just made some foods")
 
 
     def isValidMove(self, previousPosition, nextPosition):
@@ -127,8 +140,6 @@ class Board:
         self.map_level = 2
         self.walkable = [int(x[:-4]) for x in os.listdir(WALKABLE_DIRECTORY_NAME)]
         self.unwalkable = [int(x[:-4]) for x in os.listdir(UNWALKABLE_DIRECTORY_NAME)]
-        print(self.walkable)
-        print(self.unwalkable)
 
     def initiateBaseTiles(self, tileImage):
         self.loadTileFromMap()
@@ -185,7 +196,6 @@ class Cart:
 Game = Game(Settings.DEFAULT)
 def setup():
     # Sounds
-    print(partition(10))
     global FOOD_DEPOSIT
     FOOD_DEPOSIT = SoundFile(this, FOOD_DEPOSIT_NAME)
     
@@ -270,11 +280,3 @@ def keyPressed():
     Game.Board.tiles[previousPlayerPosition].updateImage(Game.Board.imageFromMapIndex(previousPlayerPosition, Game.images["TILE_IMAGE"]))
     Game.Board.tiles[Game.Player.position].updateImage(Game.images["PLAYER_IMAGE"])
     
-def partition(number):
-    answer = set()
-    answer.add((number, ))
-    for x in range(1, number):
-        for y in partition(number - x):
-            answer.add(tuple(sorted((x, ) + y)))
-
-    return [tup for tup in answer if all(el <= food_types for el in tup)]
