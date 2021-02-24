@@ -20,6 +20,8 @@ IMAGE_DIRECTORY_NAME = "images/"
 UNWALKABLE_DIRECTORY_NAME = IMAGE_DIRECTORY_NAME + "unwalkable/"
 WALKABLE_DIRECTORY_NAME = IMAGE_DIRECTORY_NAME + "walkable/"
 
+food_types = 3
+
 ###                        Walkable vs unwalkable                        ###
 ### Weird convention: use odd numbers to denote walkable tiles (floors), ###
 ### and even numbers to denote unwalkable tiles (walls)                  ###
@@ -133,7 +135,6 @@ class Board:
         for i in range(self.tileCount):
             tileX = (i % self.dimension) * self.tileSize
             tileY = (i / self.dimension) * self.tileSize
-            #self.tiles.append(Tile(tileX, tileY, tileImage, self.tileSize))
             self.tiles.append(Tile(tileX, tileY, self.imageFromMapIndex(i, tileImage), self.tileSize))
             
     def loadTileFromMap(self):
@@ -184,6 +185,7 @@ class Cart:
 Game = Game(Settings.DEFAULT)
 def setup():
     # Sounds
+    print(partition(10))
     global FOOD_DEPOSIT
     FOOD_DEPOSIT = SoundFile(this, FOOD_DEPOSIT_NAME)
     
@@ -214,7 +216,7 @@ def draw():
         text("Groceries left: " + str(Game.gameSettings['winFoodCount'] - len(Game.Cart.foodHeld)), 1 * width / 4 + 50, 100)
         
         if len(Game.foodLocations) == 0: 
-            Game.initializeFoods(Game.images["FOOD_IMAGE"], 10)
+            Game.initializeFoods(Game.images["FOOD_IMAGE"], 5)
 
     if Game.currentState == WIN_STATE: # Win state
         textFont(gameFont, 64)
@@ -268,3 +270,11 @@ def keyPressed():
     Game.Board.tiles[previousPlayerPosition].updateImage(Game.Board.imageFromMapIndex(previousPlayerPosition, Game.images["TILE_IMAGE"]))
     Game.Board.tiles[Game.Player.position].updateImage(Game.images["PLAYER_IMAGE"])
     
+def partition(number):
+    answer = set()
+    answer.add((number, ))
+    for x in range(1, number):
+        for y in partition(number - x):
+            answer.add(tuple(sorted((x, ) + y)))
+
+    return [tup for tup in answer if all(el <= food_types for el in tup)]
