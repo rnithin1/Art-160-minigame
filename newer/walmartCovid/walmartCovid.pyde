@@ -4,6 +4,7 @@ import re
 import os
 import random
 import Settings
+import time
 from Images import IMAGES
 add_library("sound")
 
@@ -147,8 +148,13 @@ class Game:
     def updateGameState(self):
         if self.gameSettings['winFoodCount'] == len(self.Cart.foodHeld):
             self.currentState = WIN_STATE
+            output.println("game won in " +
+                           str(time.time() - startTime) + " seconds")
+
         if self.Player.position in [enemy.pos for enemy in self.enemies]:
             self.currentState = LOSE_STATE
+            output.println("game lost in " +
+                           str(time.time() - startTime) + " seconds")
 
 
 class Board:
@@ -227,7 +233,9 @@ def setup():
     global FOOD_DEPOSIT
     global BACKGROUND_SOUNDS
     global output
-    output = createWriter("positions.txt")
+    global startTime
+    startTime = time.time()
+    output = createWriter("output.txt")
     FOOD_DEPOSIT = SoundFile(this, FOOD_DEPOSIT_NAME)
     BACKGROUND_SOUNDS = SoundFile(this, BACKGROUND_SOUNDS_NAME)
 
@@ -289,11 +297,15 @@ def loadImages():
 
 
 def keyPressed():
-    output.println("key pressed: " + key)
-    if key == "0" and Game.currentState == LOSE_STATE:
+    if (key != CODED):
+        output.println("key pressed: " + str(key))
+    if key == "q":
+        output.println("game played for " +
+                       str(time.time()-startTime) + " seconds")
         output.flush()
         output.close()
         exit()
+    if key == "0" and Game.currentState == LOSE_STATE:
         Game.restart()
     if key == "1" and Game.currentState == WIN_STATE:
         Game.nextLevel()
@@ -302,12 +314,16 @@ def keyPressed():
     if key == CODED:
         if keyCode == RIGHT and Game.isValidMove(previousPlayerPosition, previousPlayerPosition + 1):
             Game.Player.position += 1
+            output.println("key pressed: right")
         elif keyCode == LEFT and Game.isValidMove(previousPlayerPosition, previousPlayerPosition - 1):
             Game.Player.position -= 1
+            output.println("key pressed: left")
         elif keyCode == DOWN and Game.isValidMove(previousPlayerPosition, previousPlayerPosition + boardDimension):
             Game.Player.position += boardDimension
+            output.println("key pressed: down")
         elif keyCode == UP and Game.isValidMove(previousPlayerPosition, previousPlayerPosition - boardDimension):
             Game.Player.position -= boardDimension
+            output.println("key pressed: up")
 
     if Game.Board.mapValue(Game.Player.position) in Game.Board.unwalkable:
         Game.Player.position = previousPlayerPosition
@@ -317,10 +333,14 @@ def keyPressed():
         if Game.Player.foodHeld:
             Game.Cart.foodHeld.append(Game.Player.foodHeld.pop())
             FOOD_DEPOSIT.play()
+            output.println("item placed in cart in " +
+                           str(time.time() - startTime) + " seconds")
 
     if Game.Player.position in Game.foodLocations:
         Game.foodLocations.remove(Game.Player.position)
         Game.Player.foodHeld.append(Game.Player.position)
+        output.println("item picked up in " +
+                       str(time.time() - startTime) + " seconds")
 
     Game.Player.position = Game.Player.position % Game.Board.tileCount
     print(Game.Board.mapValue(previousPlayerPosition))
