@@ -50,7 +50,7 @@ class Game:
         self.gameHeight = gameHeight
         self.images = None
         self.food_list = []
-
+        self.currentLevel = 0  # The player always starts at level 0.
         self.food_types = 5
 
     def restart(self):
@@ -69,6 +69,11 @@ class Game:
         self.initializeEnemies(
             self.images["VIRUS_IMAGE"], self.images["TILE_IMAGE"])
         self.initializeFoods(self.images["FOOD_IMAGE"])
+
+    def nextLevel(self):
+        # Temporary restart method
+        # After we refactor and add more levels, I'll update this method to increment from 1-10.
+        self.restart()
 
     def start(self):
         self.Board.initiateBaseTiles(self.images["TILE_IMAGE"])
@@ -128,16 +133,12 @@ class Game:
         tileCount = self.Board.tileCount
         if nextPosition > tileCount or nextPosition < 0:
             return False
-
         elif nextPosition // boardDimension == boardDimension - 1 and previousPosition // boardDimension == 0:
             return False
-
         elif previousPosition // boardDimension == boardDimension - 1 and nextPosition // boardDimension == 0:
             return False
-
         elif nextPosition % boardDimension == 0 and previousPosition % boardDimension == boardDimension - 1:
             return False
-
         elif previousPosition % boardDimension == 0 and nextPosition % boardDimension == boardDimension - 1:
             return False
         else:
@@ -185,13 +186,10 @@ class Board:
         item = self.mapValue(index)
         if item in self.walkable:
             path = loadImage(WALKABLE_DIRECTORY_NAME + str(item) + ".png")
-
         elif item in self.unwalkable:
             path = loadImage(UNWALKABLE_DIRECTORY_NAME + str(item) + ".png")
-
         else:
             path = tileImage
-
         return path
 
     def placePlayer(self, playerLocation, PLAYER_IMAGE):
@@ -289,8 +287,10 @@ def loadImages():
 
 
 def keyPressed():
-    if key == "0":
+    if key == "0" and Game.currentState == LOSE_STATE:
         Game.restart()
+    if key == "1" and Game.currentState == WIN_STATE:
+        Game.nextLevel()
     previousPlayerPosition = Game.Player.position
     boardDimension = Game.Board.dimension
     if key == CODED:

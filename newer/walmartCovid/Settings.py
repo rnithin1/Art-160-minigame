@@ -4,5 +4,5 @@ DEFAULT = {
     "cartPosition": 9,
     "enemyCount": 7,
     "foodCount": 5,
-    "winFoodCount": 10
+    "winFoodCount": 1
 }
