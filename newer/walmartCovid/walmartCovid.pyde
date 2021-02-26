@@ -226,6 +226,8 @@ def setup():
     # Sounds
     global FOOD_DEPOSIT
     global BACKGROUND_SOUNDS
+    global output
+    output = createWriter("positions.txt")
     FOOD_DEPOSIT = SoundFile(this, FOOD_DEPOSIT_NAME)
     BACKGROUND_SOUNDS = SoundFile(this, BACKGROUND_SOUNDS_NAME)
 
@@ -287,7 +289,11 @@ def loadImages():
 
 
 def keyPressed():
+    output.println("key pressed: " + key)
     if key == "0" and Game.currentState == LOSE_STATE:
+        output.flush()
+        output.close()
+        exit()
         Game.restart()
     if key == "1" and Game.currentState == WIN_STATE:
         Game.nextLevel()
