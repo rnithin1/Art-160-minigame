@@ -23,7 +23,7 @@ WALKABLE_DIRECTORY_NAME = IMAGE_DIRECTORY_NAME + "walkable/"
 
 FOOD_DIRECTORY_NAME = "food/"
 
-food_types = 3
+food_types = 5
 
 ###                        Walkable vs unwalkable                        ###
 ### Weird convention: use odd numbers to denote walkable tiles (floors), ###
@@ -51,7 +51,7 @@ class Game:
         self.images = None
         self.food_list = []
 
-        self.food_types = 3
+        self.food_types = 5
 
     def restart(self):
         self.Board = Board(self.gameSettings['dimension'], self.gameWidth)
