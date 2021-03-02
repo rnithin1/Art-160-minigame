@@ -353,3 +353,44 @@ def keyPressed():
         Game.Board.imageFromMapIndex(previousPlayerPosition, Game.images["TILE_IMAGE"]))
     Game.Board.tiles[Game.Player.position].updateImage(
         Game.images["PLAYER_IMAGE"])
+    
+def get_radius(r=Game.Board.radius):
+    x = Game.Player.position % Game.Board.dimension
+    y = Game.Player.position // Game.Board.dimension
+    x_bound_l = max(x - r, (x // Game.Board.dimension) * Game.Board.dimension)
+    x_bound_r = min(x + r, (x // Game.Board.dimension + 1) * Game.Board.dimension - 1)
+    y_bound_u = max(y - r * Game.Board.dimension, y % Game.Board.dimension)
+    y_bound_d = min(y + r * Game.Board.dimension, Game.Board.dimension**2 - 1 - (y % Game.Board.dimension))
+    #print(int(x_bound_l), int(x_bound_r), int(y_bound_u), int(y_bound_d))
+    
+    tiles = []
+    coords = []
+    for j in range(y - r, y + r + 1):
+        for i in range(x_bound_l, x_bound_r + 1, 1):
+            c = j * Game.Board.dimension + i
+            if c >= 0 and c < Game.Board.dimension**2:
+                tiles.append(c)
+        
+    for j in range(y - r, y + r + 1):
+        temp = []
+        for i in range(x - r, x + r + 1, 1):
+            if j * Game.Board.dimension + i in tiles:
+                temp.append(j * Game.Board.dimension + i)
+            else:
+                temp.append(-1)
+        coords.append(temp)
+    
+    for i in range(2*r+1):
+        for j in range(2*r+1):
+            print(coords[i][j])
+    print("W")
+    
+    for i in range(2*Game.Board.radius + 1):
+        for j in range(2*Game.Board.radius + 1):
+            c = j * Game.Board.dimension + i
+            if coords[i][j] >= 0:
+                tileX = (c % Game.Board.dimension) * Game.Board.tileSize
+                tileY = (c / Game.Board.dimension) * Game.Board.tileSize
+                Game.Board.tiles[c].setApparentPos(tileX, tileY)
+
+    return tiles, coords
