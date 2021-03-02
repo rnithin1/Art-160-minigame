@@ -234,6 +234,7 @@ def setup():
     global BACKGROUND_SOUNDS
     global output
     global startTime
+    global strawberry
     startTime = time.time()
     output = createWriter("output.txt")
     FOOD_DEPOSIT = SoundFile(this, FOOD_DEPOSIT_NAME)
@@ -263,6 +264,8 @@ def draw():
                 Game.Board.tiles[enemy.pos].updateImage(
                     Game.Board.imageFromMapIndex(enemy.pos, Game.images["TILE_IMAGE"]))
                 Game.foodLocations.remove(enemy.pos)
+            Game.Board.tiles[enemy.pos].updateImage(
+                Game.Board.imageFromMapIndex(enemy.pos, Game.images["VIRUS_IMAGE"]))
 
         Game.Board.tiles[Game.Player.position].updateImage(
             Game.images["PLAYER_IMAGE"])

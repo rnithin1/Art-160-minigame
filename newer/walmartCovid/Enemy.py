@@ -38,7 +38,7 @@ class Enemy:
             newPos = (self.pos + 1) % self.boardSize
         else:
             newPos = (self.pos - 1) % self.boardSize
-        self.tiles[newPos].updateImage(self.image)
+        # self.tiles[newPos].updateImage(self.image)
         self.tiles[prevPos].updateImage(self.Game.Board.imageFromMapIndex(
             prevPos, self.Game.images["TILE_IMAGE"]))
         self.lastMove = time.time()

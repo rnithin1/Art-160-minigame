@@ -1,0 +1,793 @@
+game lost in 6.45500016212 seconds
+game lost in 6.50699996948 seconds
+game lost in 6.52400016785 seconds
+game lost in 6.54100012779 seconds
+game lost in 6.55800008774 seconds
+game lost in 6.57700014114 seconds
+game lost in 6.59200000763 seconds
+game lost in 6.60800004005 seconds
+game lost in 6.625 seconds
+game lost in 6.64200019836 seconds
+game lost in 6.65799999237 seconds
+game lost in 6.67500019073 seconds
+game lost in 6.69200015068 seconds
+game lost in 6.70900011063 seconds
+game lost in 6.72399997711 seconds
+game lost in 6.74100017548 seconds
+game lost in 6.75800013542 seconds
+game lost in 6.77500009537 seconds
+game lost in 6.79200005531 seconds
+game lost in 6.80800008774 seconds
+game lost in 6.82500004768 seconds
+game lost in 6.84100008011 seconds
+game lost in 6.85800004005 seconds
+game lost in 6.87300014496 seconds
+game lost in 6.89300012589 seconds
+game lost in 6.90799999237 seconds
+game lost in 6.9240000248 seconds
+game lost in 6.94200015068 seconds
+game lost in 6.95800018311 seconds
+game lost in 6.97500014305 seconds
+game lost in 6.99100017548 seconds
+game lost in 7.00800013542 seconds
+game lost in 7.02300000191 seconds
+game lost in 7.04299998283 seconds
+game lost in 7.05800008774 seconds
+game lost in 7.07400012016 seconds
+game lost in 7.09100008011 seconds
+game lost in 7.10800004005 seconds
+game lost in 7.125 seconds
+game lost in 7.14200019836 seconds
+game lost in 7.15799999237 seconds
+game lost in 7.17300009727 seconds
+game lost in 7.1930000782 seconds
+game lost in 7.20800018311 seconds
+game lost in 7.22399997711 seconds
+game lost in 7.242000103 seconds
+game lost in 7.25699996948 seconds
+game lost in 7.27400016785 seconds
+game lost in 7.29000020027 seconds
+game lost in 7.30800008774 seconds
+game lost in 7.32500004768 seconds
+game lost in 7.34100008011 seconds
+game lost in 7.35800004005 seconds
+game lost in 7.37300014496 seconds
+game lost in 7.39300012589 seconds
+game lost in 7.40799999237 seconds
+game lost in 7.42300009727 seconds
+game lost in 7.44000005722 seconds
+game lost in 7.45900011063 seconds
+game lost in 7.47500014305 seconds
+game lost in 7.492000103 seconds
+game lost in 7.50900006294 seconds
+game lost in 7.52300000191 seconds
+game lost in 7.54100012779 seconds
+game lost in 7.55800008774 seconds
+game lost in 7.5759999752 seconds
+game lost in 7.59100008011 seconds
+game lost in 7.60800004005 seconds
+game lost in 7.62400007248 seconds
+game lost in 7.64100003242 seconds
+game lost in 7.65700006485 seconds
+game lost in 7.67600011826 seconds
+game lost in 7.69200015068 seconds
+game lost in 7.70800018311 seconds
+game lost in 7.72500014305 seconds
+game lost in 7.742000103 seconds
+game lost in 7.75699996948 seconds
+game lost in 7.77500009537 seconds
+game lost in 7.79100012779 seconds
+game lost in 7.80700016022 seconds
+game lost in 7.82700014114 seconds
+game lost in 7.84200000763 seconds
+game lost in 7.85800004005 seconds
+game lost in 7.87400007248 seconds
+game lost in 7.89200019836 seconds
+game lost in 7.90799999237 seconds
+game lost in 7.92500019073 seconds
+game lost in 7.94200015068 seconds
+game lost in 7.95700001717 seconds
+game lost in 7.97500014305 seconds
+game lost in 7.992000103 seconds
+game lost in 8.00900006294 seconds
+game lost in 8.02500009537 seconds
+game lost in 8.04200005531 seconds
+game lost in 8.05800008774 seconds
+game lost in 8.07400012016 seconds
+game lost in 8.09200000763 seconds
+game lost in 8.10800004005 seconds
+game lost in 8.12400007248 seconds
+game lost in 8.14200019836 seconds
+game lost in 8.15799999237 seconds
+game lost in 8.1740000248 seconds
+game lost in 8.19099998474 seconds
+game lost in 8.20800018311 seconds
+game lost in 8.22500014305 seconds
+game lost in 8.242000103 seconds
+game lost in 8.25800013542 seconds
+game lost in 8.27500009537 seconds
+game lost in 8.29000020027 seconds
+game lost in 8.30900001526 seconds
+game lost in 8.32300019264 seconds
+game lost in 8.34100008011 seconds
+game lost in 8.35800004005 seconds
+game lost in 8.37600016594 seconds
+game lost in 8.39200019836 seconds
+game lost in 8.40799999237 seconds
+game lost in 8.4240000248 seconds
+game lost in 8.44099998474 seconds
+game lost in 8.45800018311 seconds
+game lost in 8.47500014305 seconds
+key pressed: 0
+key pressed: down
+key pressed: down
+key pressed: right
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: right
+key pressed: right
+key pressed: right
+key pressed: up
+key pressed: right
+key pressed: down
+key pressed: right
+key pressed: right
+key pressed: right
+key pressed: up
+item picked up in 42.1880002022 seconds
+key pressed: right
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: right
+key pressed: right
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+item picked up in 45.8090000153 seconds
+key pressed: left
+key pressed: left
+key pressed: left
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: right
+item placed in cart in 47.6700000763 seconds
+key pressed: right
+item placed in cart in 47.7440001965 seconds
+key pressed: right
+key pressed: right
+key pressed: left
+key pressed: left
+item picked up in 48.4800000191 seconds
+key pressed: left
+key pressed: right
+key pressed: right
+key pressed: right
+key pressed: right
+item placed in cart in 49.9409999847 seconds
+key pressed: right
+key pressed: right
+key pressed: right
+key pressed: right
+key pressed: left
+key pressed: left
+key pressed: left
+key pressed: left
+key pressed: left
+key pressed: left
+key pressed: left
+key pressed: left
+item picked up in 52.2100000381 seconds
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+item picked up in 53.4110000134 seconds
+key pressed: right
+key pressed: down
+item picked up in 54.1909999847 seconds
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: right
+key pressed: right
+key pressed: right
+key pressed: right
+key pressed: right
+key pressed: right
+key pressed: right
+key pressed: right
+item placed in cart in 57.0940001011 seconds
+key pressed: right
+item placed in cart in 57.2900002003 seconds
+key pressed: right
+item placed in cart in 57.4790000916 seconds
+key pressed: right
+key pressed: right
+key pressed: right
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: left
+key pressed: left
+key pressed: left
+key pressed: up
+item picked up in 63.6700000763 seconds
+key pressed: up
+item picked up in 64.5880000591 seconds
+key pressed: up
+key pressed: left
+key pressed: down
+key pressed: down
+item picked up in 65.8949999809 seconds
+key pressed: down
+key pressed: right
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: right
+key pressed: right
+key pressed: right
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: right
+item placed in cart in 75.5730001926 seconds
+key pressed: right
+item placed in cart in 75.7440001965 seconds
+key pressed: right
+item placed in cart in 75.9179999828 seconds
+key pressed: right
+key pressed: right
+key pressed: left
+key pressed: left
+key pressed: left
+key pressed: down
+key pressed: down
+key pressed: down
+key pressed: up
+key pressed: up
+key pressed: up
+key pressed: right
+key pressed: right
+key pressed: right
+key pressed: down
+key pressed: right
+key pressed: right
+key pressed: right
+key pressed: up
+game lost in 81.0580000877 seconds
+game lost in 81.0780000687 seconds
+game lost in 81.0940001011 seconds
+game lost in 81.1089999676 seconds
+game lost in 81.128000021 seconds
+game lost in 81.1440000534 seconds
+game lost in 81.1610000134 seconds
+game lost in 81.1770000458 seconds
+game lost in 81.1920001507 seconds
+game lost in 81.2110002041 seconds
+game lost in 81.2269999981 seconds
+game lost in 81.2430000305 seconds
+game lost in 81.2590000629 seconds
+game lost in 81.2750000954 seconds
+game lost in 81.2940001488 seconds
+game lost in 81.3110001087 seconds
+game lost in 81.3270001411 seconds
+game lost in 81.3440001011 seconds
+game lost in 81.3600001335 seconds
+game lost in 81.3760001659 seconds
+game lost in 81.3940000534 seconds
+game lost in 81.4120001793 seconds
+game lost in 81.4260001183 seconds
+game lost in 81.4450001717 seconds
+game lost in 81.4610002041 seconds
+game lost in 81.478000164 seconds
+game lost in 81.495000124 seconds
+game lost in 81.5090000629 seconds
+game lost in 81.5280001163 seconds
+game lost in 81.5440001488 seconds
+game lost in 81.5610001087 seconds
+game lost in 81.5759999752 seconds
+game lost in 81.5950000286 seconds
+game lost in 81.611000061 seconds
+game lost in 81.628000021 seconds
+game lost in 81.6430001259 seconds
+game lost in 81.6620001793 seconds
+game lost in 81.6779999733 seconds
+game lost in 81.6930000782 seconds
+game lost in 81.7100000381 seconds
+game lost in 81.728000164 seconds
+game lost in 81.7430000305 seconds
+game lost in 81.7610001564 seconds
+game lost in 81.7770001888 seconds
+game lost in 81.7920000553 seconds
+game lost in 81.8100001812 seconds
+game lost in 81.8259999752 seconds
+game lost in 81.8450000286 seconds
+game lost in 81.8600001335 seconds
+game lost in 81.8760001659 seconds
+game lost in 81.8930001259 seconds
+game lost in 81.9120001793 seconds
+game lost in 81.9270000458 seconds
+game lost in 81.9450001717 seconds
+game lost in 81.9600000381 seconds
+game lost in 81.978000164 seconds
+game lost in 81.995000124 seconds
+game lost in 82.0110001564 seconds
+game lost in 82.0270001888 seconds
+game lost in 82.0450000763 seconds
+game lost in 82.0590000153 seconds
+game lost in 82.0759999752 seconds
+game lost in 82.0920000076 seconds
+game lost in 82.1119999886 seconds
+game lost in 82.1260001659 seconds
+game lost in 82.1440000534 seconds
+game lost in 82.1600000858 seconds
+game lost in 82.1760001183 seconds
+game lost in 82.1940000057 seconds
+game lost in 82.2080001831 seconds
+game lost in 82.2260000706 seconds
+game lost in 82.245000124 seconds
+game lost in 82.2599999905 seconds
+game lost in 82.2770001888 seconds
+game lost in 82.2929999828 seconds
+game lost in 82.3090000153 seconds
+game lost in 82.3250000477 seconds
+game lost in 82.3440001011 seconds
+game lost in 82.3589999676 seconds
+game lost in 82.3760001659 seconds
+game lost in 82.3930001259 seconds
+game lost in 82.4120001793 seconds
+game lost in 82.4270000458 seconds
+game lost in 82.4430000782 seconds
+game lost in 82.4610002041 seconds
+game lost in 82.4760000706 seconds
+game lost in 82.4930000305 seconds
+game lost in 82.5110001564 seconds
+game lost in 82.5250000954 seconds
+game lost in 82.5440001488 seconds
+game lost in 82.5600001812 seconds
+game lost in 82.5780000687 seconds
+game lost in 82.5940001011 seconds
+game lost in 82.6100001335 seconds
+game lost in 82.6270000935 seconds
+game lost in 82.6420001984 seconds
+game lost in 82.6610000134 seconds
+game lost in 82.6770000458 seconds
+game lost in 82.6930000782 seconds
+game lost in 82.7090001106 seconds
+game lost in 82.7269999981 seconds
+game lost in 82.7440001965 seconds
+game lost in 82.7599999905 seconds
+game lost in 82.7760000229 seconds
+game lost in 82.7920000553 seconds
+game lost in 82.8100001812 seconds
+game lost in 82.8259999752 seconds
+game lost in 82.8450000286 seconds
+game lost in 82.8589999676 seconds
+game lost in 82.878000021 seconds
+game lost in 82.8930001259 seconds
+game lost in 82.9100000858 seconds
+game lost in 82.9260001183 seconds
+game lost in 82.9440000057 seconds
+game lost in 82.9600000381 seconds
+game lost in 82.978000164 seconds
+game lost in 82.992000103 seconds
+game lost in 83.0110001564 seconds
+game lost in 83.0260000229 seconds
+game lost in 83.0440001488 seconds
+game lost in 83.0580000877 seconds
+game lost in 83.0780000687 seconds
+game lost in 83.0930001736 seconds
+game lost in 83.1100001335 seconds
+game lost in 83.128000021 seconds
+game lost in 83.1440000534 seconds
+game lost in 83.1610000134 seconds
+game lost in 83.1760001183 seconds
+game lost in 83.1940000057 seconds
+game lost in 83.2110002041 seconds
+game lost in 83.2260000706 seconds
+game lost in 83.2430000305 seconds
+game lost in 83.2620000839 seconds
+game lost in 83.2750000954 seconds
+game lost in 83.2940001488 seconds
+game lost in 83.3090000153 seconds
+game lost in 83.3280000687 seconds
+game lost in 83.3420000076 seconds
+game lost in 83.370000124 seconds
+game lost in 83.3760001659 seconds
+game lost in 83.3940000534 seconds
+game lost in 83.4100000858 seconds
+game lost in 83.4279999733 seconds
+game lost in 83.4420001507 seconds
+game lost in 83.4610002041 seconds
+game lost in 83.4769999981 seconds
+game lost in 83.495000124 seconds
+game lost in 83.5120000839 seconds
+game lost in 83.5280001163 seconds
+game lost in 83.5440001488 seconds
+game lost in 83.5600001812 seconds
+game lost in 83.5759999752 seconds
+game lost in 83.5950000286 seconds
+game lost in 83.6119999886 seconds
+game lost in 83.6270000935 seconds
+game lost in 83.6449999809 seconds
+game lost in 83.6620001793 seconds
+game lost in 83.6770000458 seconds
+game lost in 83.6930000782 seconds
+game lost in 83.7120001316 seconds
+game lost in 83.7260000706 seconds
+game lost in 83.745000124 seconds
+game lost in 83.7610001564 seconds
+game lost in 83.7760000229 seconds
+game lost in 83.7950000763 seconds
+game lost in 83.8120000362 seconds
+game lost in 83.8280000687 seconds
+game lost in 83.8430001736 seconds
+game lost in 83.861000061 seconds
+game lost in 83.878000021 seconds
+game lost in 83.8930001259 seconds
+game lost in 83.9090001583 seconds
+game lost in 83.9279999733 seconds
+game lost in 83.9450001717 seconds
+game lost in 83.9620001316 seconds
+game lost in 83.9760000706 seconds
+game lost in 83.995000124 seconds
+game lost in 84.0110001564 seconds
+game lost in 84.0280001163 seconds
+game lost in 84.0440001488 seconds
+game lost in 84.0610001087 seconds
+game lost in 84.0770001411 seconds
+game lost in 84.0950000286 seconds
+game lost in 84.1119999886 seconds
+game lost in 84.128000021 seconds
+game lost in 84.1430001259 seconds
+game lost in 84.1620001793 seconds
+game lost in 84.1779999733 seconds
+game lost in 84.1950001717 seconds
+game lost in 84.2100000381 seconds
+game lost in 84.2260000706 seconds
+game lost in 84.245000124 seconds
+game lost in 84.2610001564 seconds
+game lost in 84.2770001888 seconds
+game lost in 84.2950000763 seconds
+game lost in 84.3090000153 seconds
+game lost in 84.3280000687 seconds
+game lost in 84.3430001736 seconds
+game lost in 84.3619999886 seconds
+game lost in 84.378000021 seconds
+game lost in 84.3949999809 seconds
+game lost in 84.4110000134 seconds
+game lost in 84.4270000458 seconds
+game lost in 84.4460000992 seconds
+game lost in 84.4620001316 seconds
+game lost in 84.4760000706 seconds
+game lost in 84.495000124 seconds
+game lost in 84.5110001564 seconds
+game lost in 84.5280001163 seconds
+game lost in 84.5450000763 seconds
+game lost in 84.5600001812 seconds
+game lost in 84.5780000687 seconds
+game lost in 84.5930001736 seconds
+game lost in 84.6119999886 seconds
+game lost in 84.6260001659 seconds
+game lost in 84.6449999809 seconds
+game lost in 84.6610000134 seconds
+game lost in 84.6779999733 seconds
+game lost in 84.6950001717 seconds
+game lost in 84.7120001316 seconds
+game lost in 84.728000164 seconds
+game lost in 84.745000124 seconds
+game lost in 84.7599999905 seconds
+game lost in 84.7780001163 seconds
+game lost in 84.7940001488 seconds
+game lost in 84.8120000362 seconds
+game lost in 84.8280000687 seconds
+game lost in 84.8440001011 seconds
+game lost in 84.8619999886 seconds
+game lost in 84.8770000935 seconds
+game lost in 84.8930001259 seconds
+game lost in 84.9120001793 seconds
+game lost in 84.9279999733 seconds
+game lost in 84.9440000057 seconds
+game lost in 84.9600000381 seconds
+game lost in 84.9760000706 seconds
+game lost in 84.9960000515 seconds
+game lost in 85.0099999905 seconds
+game lost in 85.0280001163 seconds
+game lost in 85.0450000763 seconds
+game lost in 85.0620000362 seconds
+game lost in 85.0770001411 seconds
+game lost in 85.0950000286 seconds
+game lost in 85.1119999886 seconds
+game lost in 85.128000021 seconds
+game lost in 85.1449999809 seconds
+game lost in 85.1620001793 seconds
+game lost in 85.1779999733 seconds
+game lost in 85.1950001717 seconds
+game lost in 85.2120001316 seconds
+game lost in 85.2269999981 seconds
+game lost in 85.2440001965 seconds
+game lost in 85.2620000839 seconds
+game lost in 85.2760000229 seconds
+game lost in 85.2929999828 seconds
+game lost in 85.3120000362 seconds
+game lost in 85.3280000687 seconds
+game lost in 85.3440001011 seconds
+game lost in 85.361000061 seconds
+game lost in 85.3790001869 seconds
+game lost in 85.3940000534 seconds
+game lost in 85.4110000134 seconds
+game lost in 85.4279999733 seconds
+game lost in 85.4450001717 seconds
+game lost in 85.4610002041 seconds
+game lost in 85.478000164 seconds
+game lost in 85.4930000305 seconds
+game lost in 85.5120000839 seconds
+game lost in 85.5280001163 seconds
+game lost in 85.5440001488 seconds
+game lost in 85.5590000153 seconds
+game lost in 85.5789999962 seconds
+game lost in 85.5950000286 seconds
+game lost in 85.6100001335 seconds
+game lost in 85.6290001869 seconds
+game lost in 85.6420001984 seconds
+game lost in 85.6600000858 seconds
+game lost in 85.6770000458 seconds
+game lost in 85.6940000057 seconds
+game lost in 85.7120001316 seconds
+game lost in 85.728000164 seconds
+game lost in 85.7430000305 seconds
+game lost in 85.7599999905 seconds
+game lost in 85.7790000439 seconds
+game lost in 85.7929999828 seconds
+game lost in 85.8130002022 seconds
+game lost in 85.8259999752 seconds
+game lost in 85.8450000286 seconds
+game lost in 85.8619999886 seconds
+game lost in 85.8770000935 seconds
+game lost in 85.8949999809 seconds
+game lost in 85.9120001793 seconds
+game lost in 85.9279999733 seconds
+game lost in 85.9450001717 seconds
+game lost in 85.9600000381 seconds
+game lost in 85.9769999981 seconds
+game lost in 85.995000124 seconds
+game lost in 86.0120000839 seconds
+game lost in 86.0280001163 seconds
+game lost in 86.0429999828 seconds
+game lost in 86.0620000362 seconds
+game lost in 86.0770001411 seconds
+game lost in 86.0950000286 seconds
+game lost in 86.1119999886 seconds
+game lost in 86.128000021 seconds
+game lost in 86.1440000534 seconds
+game lost in 86.1600000858 seconds
+game lost in 86.1790001392 seconds
+game lost in 86.1950001717 seconds
+game lost in 86.2120001316 seconds
+game lost in 86.2260000706 seconds
+game lost in 86.2430000305 seconds
+game lost in 86.2610001564 seconds
+game lost in 86.2770001888 seconds
+game lost in 86.2929999828 seconds
+game lost in 86.3130002022 seconds
+game lost in 86.3280000687 seconds
+game lost in 86.3440001011 seconds
+game lost in 86.3619999886 seconds
+game lost in 86.378000021 seconds
+game lost in 86.3949999809 seconds
+game lost in 86.4110000134 seconds
+game lost in 86.4260001183 seconds
+game lost in 86.4450001717 seconds
+game lost in 86.4610002041 seconds
+game lost in 86.478000164 seconds
+game lost in 86.495000124 seconds
+game lost in 86.5099999905 seconds
+game lost in 86.5280001163 seconds
+game lost in 86.5460000038 seconds
+game lost in 86.5600001812 seconds
+game lost in 86.5789999962 seconds
+game lost in 86.5950000286 seconds
+game lost in 86.6100001335 seconds
+game lost in 86.6270000935 seconds
+game lost in 86.6440000534 seconds
+game lost in 86.6620001793 seconds
+game lost in 86.6770000458 seconds
+game lost in 86.6960000992 seconds
+game lost in 86.7120001316 seconds
+game lost in 86.728000164 seconds
+game lost in 86.7460000515 seconds
+game lost in 86.7620000839 seconds
+game lost in 86.7780001163 seconds
+game lost in 86.7950000763 seconds
+game lost in 86.8110001087 seconds
+game lost in 86.8270001411 seconds
+game lost in 86.8450000286 seconds
+game lost in 86.8619999886 seconds
+game lost in 86.8770000935 seconds
+game lost in 86.8949999809 seconds
+game lost in 86.9120001793 seconds
+game lost in 86.9279999733 seconds
+game lost in 86.9440000057 seconds
+game lost in 86.9630000591 seconds
+game lost in 86.9760000706 seconds
+game lost in 86.9960000515 seconds
+game lost in 87.0120000839 seconds
+game lost in 87.0290000439 seconds
+game lost in 87.0460000038 seconds
+game lost in 87.0610001087 seconds
+game lost in 87.0789999962 seconds
+game lost in 87.0930001736 seconds
+game lost in 87.1119999886 seconds
+game lost in 87.128000021 seconds
+game lost in 87.1440000534 seconds
+game lost in 87.1610000134 seconds
+game lost in 87.1779999733 seconds
+game lost in 87.1950001717 seconds
+game lost in 87.2120001316 seconds
+game lost in 87.228000164 seconds
+game lost in 87.2460000515 seconds
+game lost in 87.2610001564 seconds
+game lost in 87.2780001163 seconds
+game lost in 87.2950000763 seconds
+game lost in 87.3120000362 seconds
+game lost in 87.3280000687 seconds
+game lost in 87.3450000286 seconds
+game lost in 87.3600001335 seconds
+game lost in 87.378000021 seconds
+game lost in 87.3949999809 seconds
+game lost in 87.4120001793 seconds
+game lost in 87.4279999733 seconds
+game lost in 87.4450001717 seconds
+game lost in 87.4610002041 seconds
+game lost in 87.4769999981 seconds
+game lost in 87.4960000515 seconds
+game lost in 87.5120000839 seconds
+game lost in 87.5280001163 seconds
+game lost in 87.5450000763 seconds
+game lost in 87.5610001087 seconds
+game lost in 87.5770001411 seconds
+game lost in 87.5940001011 seconds
+game lost in 87.611000061 seconds
+game lost in 87.6260001659 seconds
+game lost in 87.6440000534 seconds
+game lost in 87.6620001793 seconds
+game lost in 87.6770000458 seconds
+game lost in 87.6930000782 seconds
+game lost in 87.7120001316 seconds
+game lost in 87.728000164 seconds
+game lost in 87.7440001965 seconds
+game lost in 87.7620000839 seconds
+game lost in 87.7770001888 seconds
+game lost in 87.7940001488 seconds
+game lost in 87.8100001812 seconds
+game lost in 87.8259999752 seconds
+game lost in 87.8450000286 seconds
+game lost in 87.861000061 seconds
+game lost in 87.8790001869 seconds
+game lost in 87.8949999809 seconds
+game lost in 87.9120001793 seconds
+game lost in 87.9270000458 seconds
+game lost in 87.9440000057 seconds
+game lost in 87.9620001316 seconds
+game lost in 87.978000164 seconds
+game lost in 87.995000124 seconds
+game lost in 88.0110001564 seconds
+game lost in 88.0290000439 seconds
+game lost in 88.0450000763 seconds
+game lost in 88.0610001087 seconds
+game lost in 88.0780000687 seconds
+game lost in 88.0940001011 seconds
+game lost in 88.1119999886 seconds
+game lost in 88.1290001869 seconds
+game lost in 88.1430001259 seconds
+game lost in 88.1600000858 seconds
+game lost in 88.1779999733 seconds
+game lost in 88.1950001717 seconds
+game lost in 88.2100000381 seconds
+game lost in 88.2290000916 seconds
+game lost in 88.245000124 seconds
+game lost in 88.2599999905 seconds
+game lost in 88.2799999714 seconds
+game lost in 88.2950000763 seconds
+game lost in 88.3120000362 seconds
+game lost in 88.3280000687 seconds
+game lost in 88.3440001011 seconds
+game lost in 88.3619999886 seconds
+game lost in 88.378000021 seconds
+game lost in 88.3930001259 seconds
+game lost in 88.4130001068 seconds
+game lost in 88.4260001183 seconds
+game lost in 88.4450001717 seconds
+game lost in 88.4620001316 seconds
+game lost in 88.478000164 seconds
+game lost in 88.4960000515 seconds
+game lost in 88.5120000839 seconds
+game lost in 88.5290000439 seconds
+game lost in 88.5440001488 seconds
+game lost in 88.5620000362 seconds
+game lost in 88.5780000687 seconds
+game lost in 88.5940001011 seconds
+game lost in 88.6130001545 seconds
+game lost in 88.6290001869 seconds
+game lost in 88.6460001469 seconds
+game lost in 88.6610000134 seconds
+game lost in 88.6779999733 seconds
+game lost in 88.6940000057 seconds
+game lost in 88.7120001316 seconds
+game lost in 88.728000164 seconds
+game lost in 88.7440001965 seconds
+game lost in 88.7620000839 seconds
+game lost in 88.7770001888 seconds
+game lost in 88.7940001488 seconds
+game lost in 88.8130002022 seconds
+game lost in 88.8280000687 seconds
+game lost in 88.8450000286 seconds
+game lost in 88.86100006
