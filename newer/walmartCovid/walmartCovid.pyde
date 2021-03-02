@@ -264,6 +264,7 @@ def draw():
                 Game.Board.tiles[enemy.pos].updateImage(
                     Game.Board.imageFromMapIndex(enemy.pos, Game.images["TILE_IMAGE"]))
                 Game.foodLocations.remove(enemy.pos)
+        for enemy in Game.enemies:
             Game.Board.tiles[enemy.pos].updateImage(
                 Game.Board.imageFromMapIndex(enemy.pos, Game.images["VIRUS_IMAGE"]))
 
