@@ -12,6 +12,7 @@ MENU_STATE = 0
 PLAY_STATE = 1
 WIN_STATE = 2
 LOSE_STATE = 3
+TITLE_STATE = 4
 
 ### Sounds can't be loaded in a different file ###
 SOUND_DIRECTORY_NAME = "sounds/"
@@ -45,7 +46,7 @@ class Game:
         self.Cart = Cart(gameSettings['cartPosition'])
         self.enemies = []
         self.foodLocations = []
-        self.currentState = PLAY_STATE
+        self.currentState = TITLE_STATE
         self.defaultFont = None
         self.gameWidth = gameWidth
         self.gameHeight = gameHeight
@@ -161,6 +162,7 @@ class Board:
     # The board simply keeps track of visualizing the game.
     def __init__(self, dimension, gameWidth):
 
+        self.radius = 2
         self.dimension = dimension
         self.tileCount = self.dimension**2
         self.width = gameWidth
@@ -227,7 +229,6 @@ class Cart:
 # Change params to game to use non-default settings -> see settings.py and the Game object.
 Game = Game(Settings.DEFAULT)
 
-
 def setup():
     # Sounds
     global FOOD_DEPOSIT
@@ -235,12 +236,14 @@ def setup():
     global output
     global startTime
     global strawberry
+
     startTime = time.time()
     output = createWriter("output.txt")
     FOOD_DEPOSIT = SoundFile(this, FOOD_DEPOSIT_NAME)
     BACKGROUND_SOUNDS = SoundFile(this, BACKGROUND_SOUNDS_NAME)
 
     size(700, 700)
+    
     Game.images = loadImages()
     Game.start()
 
@@ -251,56 +254,63 @@ def draw():
     Game.updateGameState()
     currentGameState = Game.currentState
     gameFont = createFont("Arial", 32)
-    if Game.currentState == PLAY_STATE:
-        if (not BACKGROUND_SOUNDS.isPlaying()):
-            BACKGROUND_SOUNDS.amp(.3)
-            BACKGROUND_SOUNDS.play()
-        for tile in Game.Board.tiles:
-            tile.showTile()
-        for enemy in Game.enemies:
-            old_pos = enemy.pos
-            enemy.move()
-            if enemy.pos in Game.foodLocations:
+    if Game.currentState == TITLE_STATE:
+        display_title_screen()
+        
+    else:
+        if Game.currentState == PLAY_STATE:
+            if (not BACKGROUND_SOUNDS.isPlaying()):
+                BACKGROUND_SOUNDS.amp(.3)
+                BACKGROUND_SOUNDS.play()
+            for tile in Game.Board.tiles:
+                tile.showTile()
+            for enemy in Game.enemies:
+                old_pos = enemy.pos
+                enemy.move()
+                if enemy.pos in Game.foodLocations:
+                    Game.Board.tiles[enemy.pos].updateImage(
+                        Game.Board.imageFromMapIndex(enemy.pos, Game.images["TILE_IMAGE"]))
+                    Game.foodLocations.remove(enemy.pos)
+            for enemy in Game.enemies:
                 Game.Board.tiles[enemy.pos].updateImage(
-                    Game.Board.imageFromMapIndex(enemy.pos, Game.images["TILE_IMAGE"]))
-                Game.foodLocations.remove(enemy.pos)
-        for enemy in Game.enemies:
-            Game.Board.tiles[enemy.pos].updateImage(
-                Game.Board.imageFromMapIndex(enemy.pos, Game.images["VIRUS_IMAGE"]))
-
-        Game.Board.tiles[Game.Player.position].updateImage(
-            Game.images["PLAYER_IMAGE"])
-        Game.Board.tiles[Game.Cart.position].updateImage(
-            Game.images["CART_IMAGE"])
-
-        textFont(gameFont, 32)
-        fill(0)
-        text("Groceries left: " + str(Game.gameSettings['winFoodCount'] - len(
-            Game.Cart.foodHeld)), 1 * width / 4 + 50, 100)
-
-        if len(Game.foodLocations) == 0:
-            Game.initializeFoods(Game.images["FOOD_IMAGE"], 5)
-
-    if Game.currentState == WIN_STATE:  # Win state
-        textFont(gameFont, 64)
-        fill(0)
-        text("You win!\n Press 0 to restart", 1 * width / 4 - 50, height / 2)
-
-    if Game.currentState == LOSE_STATE:  # Lose state
-        textFont(gameFont, 64)
-        fill(0)
-        text("You lose!\n Press 0 to restart", 1 * width / 4 - 50, height / 2)
-
-
+                    Game.Board.imageFromMapIndex(enemy.pos, Game.images["VIRUS_IMAGE"]))
+    
+            Game.Board.tiles[Game.Player.position].updateImage(
+                Game.images["PLAYER_IMAGE"])
+            Game.Board.tiles[Game.Cart.position].updateImage(
+                Game.images["CART_IMAGE"])
+    
+            textFont(gameFont, 32)
+            fill(0)
+            text("Groceries left: " + str(Game.gameSettings['winFoodCount'] - len(
+                Game.Cart.foodHeld)), 1 * width / 4 + 50, 100)
+    
+            if len(Game.foodLocations) == 0:
+                Game.initializeFoods(Game.images["FOOD_IMAGE"], 5)
+    
+        if Game.currentState == WIN_STATE:  # Win state
+            textFont(gameFont, 64)
+            fill(0)
+            text("You win!\n Press 0 to restart", 1 * width / 4 - 50, height / 2)
+    
+        if Game.currentState == LOSE_STATE:  # Lose state
+            textFont(gameFont, 64)
+            fill(0)
+            text("You lose!\n Press 0 to restart", 1 * width / 4 - 50, height / 2)
+    
+    
 def loadImages():
     loadedImages = {}
     for imageName in IMAGES:
         imageLocation = IMAGES[imageName]
         loadedImages[imageName] = loadImage(imageLocation)
     return loadedImages
-
+    
 
 def keyPressed():
+    if Game.currentState == TITLE_STATE and key == "0":
+        Game.currentState = PLAY_STATE
+        
     if (key != CODED):
         output.println("key pressed: " + str(key))
     if key == "q":
@@ -353,6 +363,16 @@ def keyPressed():
         Game.Board.imageFromMapIndex(previousPlayerPosition, Game.images["TILE_IMAGE"]))
     Game.Board.tiles[Game.Player.position].updateImage(
         Game.images["PLAYER_IMAGE"])
+    
+def display_title_screen():
+    title = loadImage("images/display/title_screen.png")
+    background(title)
+    gameFont = createFont("Arial", 32)
+    textFont(gameFont, 64)
+    fill(0)
+    text("Coronavirus\noutbreak in\nWalmart!", 1 * width / 4 - 50, height / 4)
+    text("Press 0 to start.", 1 * width / 4 - 50, 3 * height / 4)
+    
     
 def get_radius(r=Game.Board.radius):
     x = Game.Player.position % Game.Board.dimension
