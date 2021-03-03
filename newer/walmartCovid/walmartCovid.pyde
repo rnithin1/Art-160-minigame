@@ -41,7 +41,8 @@ class Game:
 
     def __init__(self, gameSettings, gameWidth=700, gameHeight=700):
         self.gameSettings = gameSettings
-        self.Board = Board(gameSettings['dimension'], gameWidth)
+        self.Board = Board(
+            gameSettings['dimension'], gameWidth, gameSettings['map'])
         self.Player = Player(gameSettings['playerPosition'])
         self.Cart = Cart(gameSettings['cartPosition'])
         self.enemies = []
@@ -54,22 +55,34 @@ class Game:
         self.food_list = []
         self.currentLevel = 0  # The player always starts at level 0.
         self.food_types = food_types
+        self.level = gameSettings['level']
 
     def restart(self):
-        self.Board = Board(self.gameSettings['dimension'], self.gameWidth)
+        print("restart")
+        self.gameSettings = getattr(Settings, "LEVEL" + str(self.level + 1))
+        self.level = self.gameSettings["level"]
+        self.Board = Board(
+            self.gameSettings['dimension'], self.gameWidth, self.gameSettings['map'])
         self.Player = Player(self.gameSettings['playerPosition'])
         self.Cart = Cart(self.gameSettings['cartPosition'])
         self.enemies = []
         self.foodLocations = []
         self.currentState = PLAY_STATE
         self.food_list = []
+        print("intialize base tiles")
 
         self.Board.initiateBaseTiles(self.images["TILE_IMAGE"])
+        print("place player")
         self.Board.placePlayer(self.Player.position,
                                self.images["PLAYER_IMAGE"])
+
+        print("place cart")
         self.Board.placeCart(self.Cart.position, self.images["CART_IMAGE"])
+
+        print("initialize enemies")
         self.initializeEnemies(
             self.images["VIRUS_IMAGE"], self.images["TILE_IMAGE"])
+        print("initlaoe foods")
         self.initializeFoods(self.images["FOOD_IMAGE"])
 
     def nextLevel(self):
@@ -160,7 +173,7 @@ class Game:
 
 class Board:
     # The board simply keeps track of visualizing the game.
-    def __init__(self, dimension, gameWidth):
+    def __init__(self, dimension, gameWidth, mapLevel):
 
         self.radius = 2
         self.dimension = dimension
@@ -168,7 +181,7 @@ class Board:
         self.width = gameWidth
         self.tileSize = gameWidth / dimension
         self.tiles = []
-        self.map_level = 2
+        self.map_level = mapLevel
         self.walkable = [int(x[:-4])
                          for x in os.listdir(WALKABLE_DIRECTORY_NAME)]
         self.unwalkable = [int(x[:-4])
@@ -227,7 +240,7 @@ class Cart:
 
 # Game initialization
 # Change params to game to use non-default settings -> see settings.py and the Game object.
-Game = Game(Settings.DEFAULT)
+Game = Game(Settings.LEVEL1)
 
 
 def setup():
@@ -236,7 +249,6 @@ def setup():
     global BACKGROUND_SOUNDS
     global output
     global startTime
-    global strawberry
 
     startTime = time.time()
     output = createWriter("output.txt")
@@ -252,6 +264,7 @@ def setup():
 
 
 def draw():
+    print(Game.currentState)
     Game.updateGameState()
     currentGameState = Game.currentState
     gameFont = createFont("Arial", 32)
@@ -290,7 +303,7 @@ def draw():
                 Game.Cart.foodHeld)), 1 * width / 4 + 50, 100)
 
             if len(Game.foodLocations) == 0:
-                Game.initializeFoods(Game.images["FOOD_IMAGE"], 5)
+                Game.initializeFoods(Game.images["FOOD_IMAGE"])
 
         if Game.currentState == WIN_STATE:  # Win state
             textFont(gameFont, 64)
@@ -328,7 +341,7 @@ def keyPressed():
     if key == "0" and Game.currentState == LOSE_STATE:
         Game.restart()
     if key == "1" and Game.currentState == WIN_STATE:
-        Game.nextLevel()
+        Game.restart()
     previousPlayerPosition = Game.Player.position
     boardDimension = Game.Board.dimension
     if key == CODED:
