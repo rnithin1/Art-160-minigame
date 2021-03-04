@@ -59,8 +59,6 @@ class Game:
 
     def restart(self):
         print("restart")
-        self.gameSettings = getattr(Settings, "LEVEL" + str(self.level + 1))
-        self.level = self.gameSettings["level"]
         self.Board = Board(
             self.gameSettings['dimension'], self.gameWidth, self.gameSettings['map'])
         self.Player = Player(self.gameSettings['playerPosition'])
@@ -88,6 +86,8 @@ class Game:
     def nextLevel(self):
         # Temporary restart method
         # After we refactor and add more levels, I'll update this method to increment from 1-10.
+        self.gameSettings = getattr(Settings, "LEVEL" + str(self.level + 1))
+        self.level = self.gameSettings["level"]
         self.restart()
 
     def start(self):
@@ -308,13 +308,13 @@ def draw():
         if Game.currentState == WIN_STATE:  # Win state
             textFont(gameFont, 64)
             fill(0)
-            text("You win!\n Press 0 to restart",
+            text("You win!\nPress 1 to play\nnext level",
                  1 * width / 4 - 50, height / 2)
 
         if Game.currentState == LOSE_STATE:  # Lose state
             textFont(gameFont, 64)
             fill(0)
-            text("You lose!\n Press 0 to restart",
+            text("You lose!\nPress 0 to restart",
                  1*width / 4 - 50, height / 2)
 
 
@@ -341,7 +341,7 @@ def keyPressed():
     if key == "0" and Game.currentState == LOSE_STATE:
         Game.restart()
     if key == "1" and Game.currentState == WIN_STATE:
-        Game.restart()
+        Game.nextLevel()
     previousPlayerPosition = Game.Player.position
     boardDimension = Game.Board.dimension
     if key == CODED:
