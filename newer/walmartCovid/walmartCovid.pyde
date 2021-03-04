@@ -133,7 +133,7 @@ class Game:
             for i in range(1, len(self.food_list) + 1):
                 for j in range(food_gen[i - 1]):
                     foodLocation = random.randint(0, self.Board.tileCount - 1)
-                    while self.Board.mapValue(foodLocation) in self.Board.unwalkable:
+                    while (self.Board.mapValue(foodLocation) in self.Board.unwalkable) or (self.Board.mapValue(foodLocation) == self.Cart):
                         foodLocation = random.randint(
                             0, self.Board.tileCount - 1)
                     self.Board.tiles[foodLocation].updateImage(
