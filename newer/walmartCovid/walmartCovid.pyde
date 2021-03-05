@@ -87,7 +87,7 @@ class Game:
         # Temporary restart method
         # After we refactor and add more levels, I'll update this method to increment from 1-10.
         self.gameSettings = getattr(
-            Settings, "LEVEL" + str((self.level + 1) % 5))
+            Settings, "LEVEL" + str((self.level + 1) % 6))
         self.level = self.gameSettings["level"]
         self.restart()
 
