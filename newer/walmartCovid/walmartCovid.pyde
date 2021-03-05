@@ -248,7 +248,7 @@ class Cart:
 # Game initialization
 # Change params to game to use non-default settings -> see settings.py and
 # the Game object.
-Game = Game(Settings.LEVEL4)
+Game = Game(Settings.LEVEL1)
 
 
 def setup():
