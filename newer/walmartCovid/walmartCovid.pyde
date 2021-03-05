@@ -33,11 +33,13 @@ food_types = 6
 
 
 class Game:
+
     """
     The Game Object keeps track of the general game state.
     This includes: the player, board, enemies, food, and cart.
     """
-    # Create Settings variables and pass into the game function on initialization if you want to tweak the parameters.
+    # Create Settings variables and pass into the game function on
+    # initialization if you want to tweak the parameters.
 
     def __init__(self, gameSettings, gameWidth=700, gameHeight=700):
         self.gameSettings = gameSettings
@@ -53,7 +55,7 @@ class Game:
         self.gameHeight = gameHeight
         self.images = None
         self.food_list = []
-        self.currentLevel = 0  # The player always starts at level 0.
+        self.currentLevel = 3  # The player always starts at level 0.
         self.food_types = food_types
         self.level = gameSettings['level']
 
@@ -85,7 +87,8 @@ class Game:
 
     def nextLevel(self):
         # Temporary restart method
-        # After we refactor and add more levels, I'll update this method to increment from 1-10.
+        # After we refactor and add more levels, I'll update this method to
+        # increment from 1-10.
         self.gameSettings = getattr(
             Settings, "LEVEL" + str((self.level + 1) % 6))
         self.level = self.gameSettings["level"]
@@ -174,11 +177,12 @@ class Game:
 
 class Board:
     # The board simply keeps track of visualizing the game.
+
     def __init__(self, dimension, gameWidth, mapLevel):
 
         self.radius = 2
         self.dimension = dimension
-        self.tileCount = self.dimension**2
+        self.tileCount = self.dimension ** 2
         self.width = gameWidth
         self.tileSize = gameWidth / dimension
         self.tiles = []
@@ -228,20 +232,23 @@ class Board:
 
 
 class Player:
+
     def __init__(self, position):
         self.position = position
         self.foodHeld = []
 
 
 class Cart:
+
     def __init__(self, position):
         self.position = position
         self.foodHeld = []
 
 
 # Game initialization
-# Change params to game to use non-default settings -> see settings.py and the Game object.
-Game = Game(Settings.LEVEL1)
+# Change params to game to use non-default settings -> see settings.py and
+# the Game object.
+Game = Game(Settings.LEVEL4)
 
 
 def setup():
@@ -256,7 +263,7 @@ def setup():
     FOOD_DEPOSIT = SoundFile(this, FOOD_DEPOSIT_NAME)
     BACKGROUND_SOUNDS = SoundFile(this, BACKGROUND_SOUNDS_NAME)
 
-    size(700, 700)
+    size(700, 700, OPENGL)
 
     Game.images = loadImages()
     Game.start()
@@ -316,7 +323,7 @@ def draw():
             textFont(gameFont, 64)
             fill(0)
             text("You lose!\nPress 0 to restart",
-                 1*width / 4 - 50, height / 2)
+                 1 * width / 4 - 50, height / 2)
 
 
 def loadImages():
@@ -335,7 +342,7 @@ def keyPressed():
         output.println("key pressed: " + str(key))
     if key == "q":
         output.println("game played for " +
-                       str(time.time()-startTime) + " seconds")
+                       str(time.time() - startTime) + " seconds")
         output.flush()
         output.close()
         exit()
@@ -391,8 +398,16 @@ def display_title_screen():
     gameFont = createFont("Arial", 32)
     textFont(gameFont, 64)
     fill(0)
-    text("Coronavirus\noutbreak in\nWalmart!", 1 * width / 4 - 50, height / 4)
-    text("Press 0 to start.", 1 * width / 4 - 50, 3 * height / 4)
+    textAlign(CENTER)
+    text("There has been\n a coronavirus\n outbreak in\nWalmart!",
+         1 * width / 2, height / 8)
+    gameFont = createFont("Arial", 32)
+    textFont(gameFont, 32)
+    fill(0)
+    textAlign(CENTER)
+    text("Use the arrow keys\nto get the groceries\nbefore you get covid.",
+         1 * width / 2, 2 * height / 4 + 100)
+    text("Press 0 to start.", 1 * width / 2, 7 * height / 8)
 
 
 def get_radius(r=Game.Board.radius):
@@ -403,7 +418,7 @@ def get_radius(r=Game.Board.radius):
                     * Game.Board.dimension - 1)
     y_bound_u = max(y - r * Game.Board.dimension, y % Game.Board.dimension)
     y_bound_d = min(y + r * Game.Board.dimension,
-                    Game.Board.dimension**2 - 1 - (y % Game.Board.dimension))
+                    Game.Board.dimension ** 2 - 1 - (y % Game.Board.dimension))
     #print(int(x_bound_l), int(x_bound_r), int(y_bound_u), int(y_bound_d))
 
     tiles = []
@@ -411,7 +426,7 @@ def get_radius(r=Game.Board.radius):
     for j in range(y - r, y + r + 1):
         for i in range(x_bound_l, x_bound_r + 1, 1):
             c = j * Game.Board.dimension + i
-            if c >= 0 and c < Game.Board.dimension**2:
+            if c >= 0 and c < Game.Board.dimension ** 2:
                 tiles.append(c)
 
     for j in range(y - r, y + r + 1):
@@ -423,13 +438,13 @@ def get_radius(r=Game.Board.radius):
                 temp.append(-1)
         coords.append(temp)
 
-    for i in range(2*r+1):
-        for j in range(2*r+1):
+    for i in range(2 * r + 1):
+        for j in range(2 * r + 1):
             print(coords[i][j])
     print("W")
 
-    for i in range(2*Game.Board.radius + 1):
-        for j in range(2*Game.Board.radius + 1):
+    for i in range(2 * Game.Board.radius + 1):
+        for j in range(2 * Game.Board.radius + 1):
             c = j * Game.Board.dimension + i
             if coords[i][j] >= 0:
                 tileX = (c % Game.Board.dimension) * Game.Board.tileSize
