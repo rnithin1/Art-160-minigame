@@ -310,7 +310,7 @@ def draw():
             text("Groceries left: " + str(Game.gameSettings['winFoodCount'] - len(
                 Game.Cart.foodHeld)), 1 * width / 4 + 50, 100)
 
-            if len(Game.foodLocations) == 0:
+            if len(Game.foodLocations) == 1:
                 Game.initializeFoods(Game.images["FOOD_IMAGE"])
 
         if Game.currentState == WIN_STATE:  # Win state
@@ -322,8 +322,9 @@ def draw():
         if Game.currentState == LOSE_STATE:  # Lose state
             textFont(gameFont, 64)
             fill(0)
+            textAlign(CENTER)
             text("You lose!\nPress 0 to restart",
-                 1 * width / 4 - 50, height / 2)
+                 1 * width / 2, height / 2)
 
 
 def loadImages():
