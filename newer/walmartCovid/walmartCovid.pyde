@@ -316,8 +316,9 @@ def draw():
         if Game.currentState == WIN_STATE:  # Win state
             textFont(gameFont, 64)
             fill(0)
+            textAlign(CENTER)
             text("You win!\nPress 1 to play\nnext level",
-                 1 * width / 4 - 50, height / 2)
+                 1 * width / 2, height / 2)
 
         if Game.currentState == LOSE_STATE:  # Lose state
             textFont(gameFont, 64)
