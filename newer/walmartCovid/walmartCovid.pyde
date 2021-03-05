@@ -57,7 +57,7 @@ class Game:
         self.food_list = []
         self.currentLevel = 3  # The player always starts at level 0.
         self.food_types = food_types
-        self.level = gameSettings['level']
+        self.level = 1#gameSettings['level']
 
     def restart(self):
         print("restart")
@@ -89,9 +89,10 @@ class Game:
         # Temporary restart method
         # After we refactor and add more levels, I'll update this method to
         # increment from 1-10.
+        self.level = self.level + 1
         self.gameSettings = getattr(
-            Settings, "LEVEL" + str((self.level + 1) % 6))
-        self.level = self.gameSettings["level"]
+            Settings, "LEVEL" + str(self.level))
+        #self.level = self.gameSettings["level"]
         self.restart()
 
     def start(self):
@@ -335,8 +336,9 @@ def loadImages():
         loadedImages[imageName] = loadImage(imageLocation)
     return loadedImages
 
-
+level = 1
 def keyPressed():
+    global Game, level
     if Game.currentState == TITLE_STATE and key == "0":
         Game.currentState = PLAY_STATE
 
@@ -352,6 +354,7 @@ def keyPressed():
         Game.restart()
     if key == "1" and Game.currentState == WIN_STATE:
         Game.nextLevel()
+        
     previousPlayerPosition = Game.Player.position
     boardDimension = Game.Board.dimension
     if key == CODED:
